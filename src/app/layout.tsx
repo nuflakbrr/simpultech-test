@@ -3,7 +3,8 @@ import type { Metadata } from 'next';
 import { Inter as FontSans } from 'next/font/google';
 import './globals.css';
 
-import ThemeProvider from '@/providers/ThemeProvider';
+import Sidebar from '@/components/Mixins/Sidebar/Sidebar';
+import NavSidebar from '@/components/Mixins/Sidebar/NavSidebar';
 
 const fontSans = FontSans({ subsets: ['latin'] });
 
@@ -20,9 +21,17 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={fontSans.className}>
-        <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
-          {children}
-        </ThemeProvider>
+        <main className="h-full">
+          <div className="h-[80px] md:pl-60 fixed inset-y-0 w-full z-50">
+            <NavSidebar />
+          </div>
+          <div className="fixed inset-y-0 z-50 flex-col hidden h-full md:flex w-60 bg-[#333333]">
+            <Sidebar />
+          </div>
+          <section className="md:pl-60 pt-[80px] h-full bg-[#333333]">
+            {children}
+          </section>
+        </main>
       </body>
     </html>
   );
