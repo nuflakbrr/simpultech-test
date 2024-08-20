@@ -2,12 +2,28 @@
 import { FC, useState } from 'react';
 import { Popover, PopoverButton, PopoverPanel } from '@headlessui/react';
 
+import RoomChat from './components/RoomChat';
+import TaskManager from './components/TaskManager';
+
 const ContainerHome: FC = () => {
-  const [isActive, setIsActive] = useState<string | null>(null);
+  const [isActive, setIsActive] = useState<string | null>(null); // inbox | task | null
 
   return (
     <>
       <div className="flex-col min-h-screen"></div>
+
+      {/* Float popover components */}
+      {isActive !== null && isActive === 'inbox' ? (
+        <div className="fixed bottom-28 right-10 bg-red-500">
+          <RoomChat />
+        </div>
+      ) : null}
+
+      {isActive !== null && isActive === 'task' ? (
+        <div className="fixed bottom-28 right-10 bg-red-500">
+          <TaskManager />
+        </div>
+      ) : null}
 
       {/* Float button popover */}
       <div className="fixed bottom-6 right-10">
