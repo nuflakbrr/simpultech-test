@@ -9,6 +9,7 @@ const ContainerHome: FC = () => {
     <>
       <div className="flex-col min-h-screen"></div>
 
+      {/* Float button popover */}
       <div className="fixed bottom-6 right-10">
         {isActive === null ? (
           <Popover>
