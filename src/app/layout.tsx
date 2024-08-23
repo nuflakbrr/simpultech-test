@@ -1,12 +1,15 @@
 import { ReactNode } from 'react';
 import type { Metadata } from 'next';
-import { Inter as FontSans } from 'next/font/google';
+import { Lato as FontSans } from 'next/font/google';
 import './globals.css';
 
 import Sidebar from '@/components/Mixins/Sidebar/Sidebar';
 import NavSidebar from '@/components/Mixins/Sidebar/NavSidebar';
 
-const fontSans = FontSans({ subsets: ['latin'] });
+const fontSans = FontSans({
+  subsets: ['latin'],
+  weight: ['100', '300', '400', '700'],
+});
 
 export const metadata: Metadata = {
   title: 'Create Next App',
